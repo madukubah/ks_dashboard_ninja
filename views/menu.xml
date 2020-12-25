@@ -1,25 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-
-
-    <record model="ir.actions.act_window" id="action_coa">
-        <field name="name">COA</field>
-        <field name="res_model">qaqc.coa</field>
-        <field name="view_type">form</field>
-        <field name="view_mode">tree,form</field>
+   
+    <!-- Dashboard -->
+    <record id="ks_dashboard_ninja.board_dashboard_action_window" model="ir.actions.client">
+        <field name="name">My Dashboard</field>
+        <field name="tag">ks_dashboard_ninja</field>
+        <field name="params" eval="{'ks_dashboard_id': ref('ks_dashboard_ninja.ks_my_default_dashboard_board')}"/>
+        <field name="res_model">ks_dashboard_ninja.board</field>
     </record>
 
+    <record id="template_id" model="ir.actions.client">
+        <field name="name">template name</field>
+        <field name="tag">template_name</field>
+        <field name="target">new</field>
+    </record>  
     
-    <menuitem id="qaqc_top" name="QAQC" sequence="10" />
+    <menuitem name="My Dashboard" id="ks_dashboard_ninja.board_menu_root"
+                  web_icon="ks_dashboard_ninja,static/description/icon.png"
+                  action="ks_dashboard_ninja.board_dashboard_action_window"/>
+    
+    <menuitem name="Configuration" id="ks_dashboard_ninja.configuration_menu" parent="ks_dashboard_ninja.board_menu_root"
+                    sequence="100"/>
 
-    <menuitem id="qaqc_sub" name="QAQC" sequence="10" 
-			parent="qaqc_top"/>
-    
-    <menuitem name="COA"
-              id="qaqc_coa"
-              parent="qaqc_sub" 
-              action="action_coa"
-              sequence= "2"
-              />
+        <menuitem name="Dashboards" id="ks_dashboard_ninja.dashboard_menu" parent="ks_dashboard_ninja.configuration_menu"
+                  action="ks_dashboard_ninja.board_form_tree_action_window" />
 
 </odoo>

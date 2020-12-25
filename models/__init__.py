@@ -1,3 +1,4 @@
 # -*- coding: utf-8 -*-
 
-from . import qaqc_coa
+from . import ks_dashboard_ninja
+from . import ks_dashboard_ninja_items

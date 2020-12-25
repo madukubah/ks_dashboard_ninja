@@ -1,26 +1,29 @@
 # -*- coding: utf-8 -*-
 
 {
-    'name': 'Sale Mining',
+    'name': 'Dashboard Ninja',
     'version': '1.0',
     'author': 'Technoindo.com',
-    'category': 'Sales Management',
+    'category': 'Dashboard',
     'depends': [
-        'sale_contract',
-        'shipping',
-        'sale_qaqc',
     ],
     'data': [
+        'data/ks_default_data.xml',
+
+        'views/ks_dashboard_ninja_assets.xml',
+        'views/ks_dashboard_ninja_item_view.xml',
+        'views/ks_dashboard_ninja.xml',
         'views/menu.xml',
-        'views/qaqc_coa.xml',
     ],
     'qweb': [
-        # 'static/src/xml/cashback_templates.xml',
+        'static/src/xml/ks_dashboard_ninja_templates.xml',
+        'static/src/xml/ks_dashboard_ninja_item_templates.xml',
+        'static/src/xml/tmpl.xml',
     ],
     'demo': [
         # 'demo/sale_agent_demo.xml',
     ],
     "installable": True,
 	"auto_instal": False,
-	"application": False,
+	"application": True,
 }
