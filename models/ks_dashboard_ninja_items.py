@@ -365,8 +365,8 @@ class KsDashboardNinjaItems(models.Model):
                         for res in ks_chart_records:
                             if res[ks_chart_groupby_relation_field] and all(
                                     measure_field in res for measure_field in ks_chart_measure_field):
-                                _logger.warning( res[ks_chart_groupby_relation_field] )
-                                _logger.warning( res[ks_chart_groupby_relation_field][1] )
+                                #_logger.warning( res[ks_chart_groupby_relation_field] )
+                                #_logger.warning( res[ks_chart_groupby_relation_field][1] )
                                 ks_chart_data['labels'].append(res[ks_chart_groupby_relation_field][1])
                                 ks_chart_data['groupByIds'].append(res[ks_chart_groupby_relation_field][0])
                                 counter = 0
@@ -833,7 +833,7 @@ class KsDashboardNinjaItems(models.Model):
     # Writing separate function to fetch dashboard item data
     def ks_fetch_model_data(self, ks_model_name, ks_domain, ks_func, rec):
         data = 0
-        _logger.warning( ks_model_name )
+        #_logger.warning( ks_model_name )
         try:
             if ks_domain and ks_domain != '[]' and ks_model_name:
                 proper_domain = self.ks_convert_into_proper_domain(ks_domain, rec)
@@ -858,7 +858,7 @@ class KsDashboardNinjaItems(models.Model):
     def ks_convert_into_proper_domain(self, ks_domain, rec):
         if ks_domain and "%UID" in ks_domain:
             ks_domain = ks_domain.replace('"%UID"', str(self.env.user.id))
-        _logger.warning( ks_domain )
+        #_logger.warning( ks_domain )
         
         if not rec.ks_date_filter_selection:
             selected_start_date = rec.env["ks_dashboard_ninja.board"].browse(
@@ -878,16 +878,16 @@ class KsDashboardNinjaItems(models.Model):
             else:
                 rec.ks_isDateFilterApplied = False
         else:
-            _logger.warning( "selected_start_date" )
-            _logger.warning( selected_start_date )
-            _logger.warning( selected_end_date )
+            #_logger.warning( "selected_start_date" )
+            #_logger.warning( selected_start_date )
+            #_logger.warning( selected_end_date )
             if selected_start_date and selected_end_date and rec.ks_date_filter_field:
                 proper_domain = [(rec.ks_date_filter_field.name, ">=", selected_start_date),
                                  (rec.ks_date_filter_field.name, "<=", selected_end_date)]
             else:
                 proper_domain = []
         
-        _logger.warning( proper_domain )
+        #_logger.warning( proper_domain )
         return proper_domain
 
     @api.onchange('ks_record_count', 'ks_layout', 'name', 'ks_model_id', 'ks_domain', 'ks_icon_select',

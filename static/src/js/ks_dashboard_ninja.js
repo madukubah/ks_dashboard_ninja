@@ -1174,7 +1174,7 @@ odoo.define('ks_dashboard_ninja.ks_dashboard', function (require) {
                         "ks_date_filter_selection": self.$el.find('.ks_date_filter_selected').attr('id'),
                     }, 
                 }).then(function (data) {
-                    console.log( data );
+                    // console.log( data );
                     $.when(self.ks_fetch_data()).then(function () {
                         self.ksRenderDashboard();
                     });
