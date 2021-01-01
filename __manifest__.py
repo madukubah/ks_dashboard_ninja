@@ -18,7 +18,9 @@
     'qweb': [
         'static/src/xml/ks_dashboard_ninja_templates.xml',
         'static/src/xml/ks_dashboard_ninja_item_templates.xml',
-        'static/src/xml/tmpl.xml',
+        'static/src/xml/ks_dashboard_ninja_item_theme.xml',
+        'static/src/xml/ks_widget_toggle.xml',
+        'static/src/xml/ks_dashboard_pro.xml',
     ],
     'demo': [
         # 'demo/sale_agent_demo.xml',

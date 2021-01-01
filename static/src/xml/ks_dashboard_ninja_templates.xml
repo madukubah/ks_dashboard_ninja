@@ -60,6 +60,19 @@
                                         class="ks_btn_last_child o_input"/>
                                     <input type="hidden" id="ksActualEndDateToStore"/>
                                 </div>
+                                
+                            </div>
+                            <div style="margin-right:8px" class="ks_date_apply_clear_print">
+                                <!--Apply and Clear buttons will only be shown when Date filter : Custom-->
+                                <button type='button' class='button btn btn-primary btn-sm apply-dashboard-date-filter ks_hide'
+                                >Apply
+                                </button>
+                                <button type='button' class='button btn btn-primary btn-sm clear-dashboard-date-filter ks_hide'
+                                >Clear
+                                </button>
+                                <button type='button'
+                                        class='btn btn-primary d-none d-lg-block fa fa-print print-dashboard-btn m-1 ml-3'
+                                        title="Print"/>
                             </div>
                         </div>
 
@@ -161,8 +174,8 @@
 <!--    Dashboard Main Body Container -->
      <t t-name="ks_main_body_container">
 
-         <div class="ks_dashboard_main_content">
-             <div class="ks_dashboard_item_content grid-stack ks_dashboard_items_list m-3" data-gs-width="35"/>
+         <div class="ks_dashboard_main_content" >
+             <div style="margin:10px" class="ks_dashboard_item_content grid-stack ks_dashboard_items_list " data-gs-width="35"/>
          </div>
      </t>
 
@@ -198,7 +211,7 @@
                         </button>
                         <ul role="menu" class="ks_dashboard_menu_container dropdown-menu dropdown-menu-right">
                             <li class="ks_md_heading">
-                                <span>Select Dashboard</span>
+                                <span style="color:black!important">Select Dashboard</span>
                             </li>
                             <li class="my-3">
                                 <select class="o_input o_group_selector o_add_group ks_dashboard_select">
@@ -219,11 +232,11 @@
                             </li>
                         </ul>
 
-                        <button title="Quick Customize"
+                        <!-- <button title="Quick Customize"
                                 class="ks_dashboard_quick_edit_action_popup  btn d-sm-block d-none"
                                 type="button" t-att-data-item-id="item.id">
                             <i class="fa fa-pencil"/>
-                        </button>
+                        </button> -->
 
                         <button type="button" title="Customize Item" class="ks_dashboard_item_customize d-block d-sm-none">
                             <i class="fa fa-pencil"/>

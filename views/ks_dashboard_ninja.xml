@@ -39,8 +39,8 @@
                         options="{'no_create': True, 'no_create_edit':True, 'no_open': True}" attrs="{'readonly':[('ks_dashboard_state','=','Locked')],
                                                                                         'required':[('ks_dashboard_state','!=','Locked')]}"/>
                 <field name="ks_dashboard_active" attrs="{'readonly':[('ks_dashboard_state','=','Locked')]}"/>
-                <!-- <field name="ks_dashboard_default_template" attrs="{'readonly':[('id','>', 0)]}" -->
-                        <!-- options="{'no_create': True, 'no_create_edit':True, 'no_open': True}"/> -->
+                <field name="ks_dashboard_default_template" attrs="{'readonly':[('id','>', 0)]}"
+                        options="{'no_create': True, 'no_create_edit':True, 'no_open': True}"/>
                 <field name="ks_set_interval"/>
                 <field name="ks_dashboard_group_access" widget="many2many_tags"/>
             </tree>

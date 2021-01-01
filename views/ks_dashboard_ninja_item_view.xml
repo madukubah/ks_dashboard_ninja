@@ -35,6 +35,7 @@
                                 <field name="ks_company_id"
                                        options="{'no_create': True, 'no_create_edit':True, 'no_open': True}"/>
                                 <field name="ks_dashboard_item_type" string="Type" context="{'current_id': id}"/>
+                                <field name="ks_chart_data"  />
                                 <!-- <field name="ks_bar_chart_stacked" string="Stacked Bar Chart"
                                        context="{'current_id': id}"
                                        attrs="{'invisible':['|','|','|',('ks_chart_data_count_type','=','count'),('ks_model_id','=',False),('ks_dashboard_item_type','=','ks_list_view'),('ks_dashboard_item_type','!=','ks_bar_chart'),('ks_dashboard_item_type','!=','ks_horizontalBar_chart')]}"/> -->
@@ -47,10 +48,10 @@
                                 <field name="ks_preview" widget="ks_dashboard_item_preview"
                                        attrs="{'invisible':[('ks_dashboard_item_type','!=','ks_tile')]}"
                                        class="oe_horizontal_separator oe_clear"/>
-                                <!-- <field name="ks_graph_preview"
+                                <field name="ks_graph_preview"
                                        class="ks_dn_graph_preview oe_horizontal_separator oe_clear"
                                        widget="ks_dashboard_graph_preview"
-                                       attrs="{'invisible':['|',('ks_dashboard_item_type','=','ks_tile'),('ks_dashboard_item_type','=','ks_list_view')]}"/> -->
+                                       attrs="{'invisible':['|',('ks_dashboard_item_type','=','ks_tile'),('ks_dashboard_item_type','=','ks_list_view')]}"/>
                                 <!-- <field name="ks_list_view_preview"
                                        class="ks_dn_graph_preview oe_horizontal_separator oe_clear"
                                        widget="ks_dashboard_list_view_preview"
@@ -144,7 +145,7 @@
                                     </group>
                                 </group>
                             </page>
-                            <!-- <page string="Display" name="display_settings">
+                            <page string="Display" name="display_settings">
                                 <group>
                                     <group attrs="{'invisible':[('ks_dashboard_item_type','!=','ks_tile')]}">
                                         <field name="ks_layout"
@@ -167,7 +168,7 @@
                                     </group>
                                 </group>
                             </page>
-                            <page string="Target" name="Target" attrs="{'invisible':['|',('ks_dashboard_item_type','not in',['ks_bar_chart','ks_horizontalBar_chart','ks_line_chart','ks_area_chart']),('ks_chart_groupby_type','!=','date_type')]}">
+                            <!-- <page string="Target" name="Target" attrs="{'invisible':['|',('ks_dashboard_item_type','not in',['ks_bar_chart','ks_horizontalBar_chart','ks_line_chart','ks_area_chart']),('ks_chart_groupby_type','!=','date_type')]}">
                                 <group>
                                     <field name="ks_goal_enable" context="{'current_id': id}"/>
 
