@@ -28,13 +28,13 @@ odoo.define('ks_dashboard_ninja_list.ks_dashboard_graph_preview', function (requ
 
         init: function(field_manager, node) {
             this._super(field_manager, node);
-            console.log( "KsGraphPreview" );
+            // console.log( "KsGraphPreview" );
         },
         start: function () {
             var self = this;
             self.ks_set_default_chart_view();
             core.bus.on("DOM_updated", this, function () {
-                console.log("DOM_updated");
+                // console.log("DOM_updated");
                 if(self.shouldRenderChart && $.find('#ksMyChart').length>0) self.renderChart();
             });
             return this._super();
@@ -60,7 +60,7 @@ odoo.define('ks_dashboard_ninja_list.ks_dashboard_graph_preview', function (requ
             });
         },
         render_value: function () {
-            console.log( "KsGraphPreview render_value" );
+            // console.log( "KsGraphPreview render_value" );
 
             var self = this;
             var field = this.view.datarecord;
@@ -92,9 +92,9 @@ odoo.define('ks_dashboard_ninja_list.ks_dashboard_graph_preview', function (requ
 
         },
         _getChartData: function () {
-            console.log( "_getChartData" );
-            console.log( this.recordData.ks_chart_data );
-            console.log( this.view.fields['ks_chart_data'] );
+            // console.log( "_getChartData" );
+            // console.log( this.recordData.ks_chart_data );
+            // console.log( this.view.fields['ks_chart_data'] );
             
             var self = this;
             self.shouldRenderChart = true;
@@ -140,7 +140,7 @@ odoo.define('ks_dashboard_ninja_list.ks_dashboard_graph_preview', function (requ
             }
         },
         renderChart: function(){
-            console.log("renderChart");
+            // console.log("renderChart");
             var self = this;
             this.ksMyChart = new Chart($.find('#ksMyChart')[0], {
                     type: this.chart_type === "area" ? "line" : this.chart_type,
@@ -268,7 +268,7 @@ odoo.define('ks_dashboard_ninja_list.ks_dashboard_graph_preview', function (requ
                 options.tooltips.callbacks = {
                                                title: function(tooltipItem, data) {
                                                     var k_amount = data.datasets[tooltipItem[0].datasetIndex]['data'][tooltipItem[0].index];
-                                                    k_amount = field_utils.round_decimals(k_amount,Float64Array);
+                                                    k_amount = field_utils.round_decimals(k_amount,3);
                                                     return data.datasets[tooltipItem[0].datasetIndex]['label']+" : " + k_amount;
                                                },
                                                label : function(tooltipItem, data) {
@@ -290,7 +290,7 @@ odoo.define('ks_dashboard_ninja_list.ks_dashboard_graph_preview', function (requ
                 options.tooltips.callbacks = {
                     label: function(tooltipItem, data) {
                         var k_amount = data.datasets[tooltipItem.datasetIndex]['data'][tooltipItem.index];
-                        k_amount = field_utils.round_decimals(k_amount,Float64Array);
+                        k_amount = field_utils.round_decimals(k_amount,3);
                         return data.datasets[tooltipItem.datasetIndex]['label']+" : " + k_amount;
                     }
                 }

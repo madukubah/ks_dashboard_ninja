@@ -652,7 +652,7 @@ odoo.define('ks_dashboard_ninja.ks_dashboard', function (require) {
                 options.tooltips.callbacks = {
                                               title: function(tooltipItem, data) {
                                                    var k_amount = data.datasets[tooltipItem[0].datasetIndex]['data'][tooltipItem[0].index];
-                                                   k_amount = field_utils.round_decimals(k_amount,Float64Array);
+                                                   k_amount = field_utils.round_decimals(k_amount, 3 );
                                                    return data.datasets[tooltipItem[0].datasetIndex]['label']+" : " + k_amount;
                                               },
                                               label : function(tooltipItem, data) {
@@ -673,7 +673,7 @@ odoo.define('ks_dashboard_ninja.ks_dashboard', function (require) {
                 options.tooltips.callbacks = {
                     label: function(tooltipItem, data) {
                         var k_amount = data.datasets[tooltipItem.datasetIndex]['data'][tooltipItem.index];
-                        k_amount = field_utils.round_decimals(k_amount,Float64Array);
+                        k_amount = field_utils.round_decimals(k_amount,3);
                         return data.datasets[tooltipItem.datasetIndex]['label']+" : " + k_amount;
                     }
                 }
