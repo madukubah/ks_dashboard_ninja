@@ -343,7 +343,7 @@ odoo.define('ks_dashboard_ninja.ks_dashboard', function (require) {
                 style_button_delete_body;
 
             // var data_count = self.ksNumFormatter(tile.ks_record_count, 1);
-            var data_count = tile.ks_record_count ;
+            var data_count = tile.ks_record_count.toLocaleString() ;
             if (tile.ks_icon_select == "Custom") {
                 if (tile.ks_icon[0]) {
                     ks_icon_url = 'data:image/' + (self.file_type_magic_word[tile.ks_icon[0]] || 'png') + ';base64,' + tile.ks_icon;

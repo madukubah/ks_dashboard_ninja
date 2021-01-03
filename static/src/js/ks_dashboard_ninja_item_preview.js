@@ -95,7 +95,7 @@ odoo.define('ks_dashboard_ninja_list.ks_dashboard_item_preview', function (requi
                 name: field.name,
                 //                    count: self.record.specialData.ks_domain.nbRecords.toLocaleString('en', {useGrouping:true}),
                 // count: self.ksNumFormatter(field.ks_record_count, 1),
-                count: field.ks_record_count,
+                count: field.ks_record_count.toLocaleString(),
                 icon_select: field.ks_icon_select,
                 default_icon: field.ks_default_icon,
                 icon_color: ks_rgba_icon_color,
