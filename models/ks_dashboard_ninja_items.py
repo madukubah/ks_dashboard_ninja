@@ -98,7 +98,7 @@ class KsDashboardNinjaItems(models.Model):
                                                ('ks_pie_chart', 'Pie Chart'),
                                                ('ks_doughnut_chart', 'Doughnut Chart'),
                                                ('ks_polarArea_chart', 'Polar Area Chart'),
-                                               ('ks_list_view', 'List View'),
+                                            #    ('ks_list_view', 'List View'),
                                                ], default=lambda self: self._context.get('ks_dashboard_item_type',
                                                                                          'ks_tile'), required=True,
                                               string="Dashboard Item Type")

@@ -2,7 +2,8 @@
 
 from odoo.fields import datetime
 from datetime import timedelta
-
+import logging
+_logger = logging.getLogger(__name__)
 
 def ks_get_date(ks_date_filter_selection):
     series = ks_date_filter_selection
@@ -77,8 +78,12 @@ def ks_get_date_range_from_month(date_state):
             month = 12
             year -= 1
 
+    # _logger.warning( month+1 )
     ks_date_data["selected_start_date"] = datetime(year,month,1)
-    ks_date_data["selected_end_date"] = datetime(year,month+1,1)-timedelta(seconds=1)
+    if month+1 == 13 :
+        ks_date_data["selected_end_date"] = datetime(year+1,1,1)-timedelta(seconds=1)
+    else : 
+        ks_date_data["selected_end_date"] = datetime(year,month+1,1)-timedelta(seconds=1)
     return ks_date_data
 
 

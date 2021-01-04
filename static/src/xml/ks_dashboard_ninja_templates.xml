@@ -128,11 +128,11 @@
                                         Polar Chart
                                     </span>
                                 </li>
-                                <li data-item="ks_list_view">
+                                <!-- <li data-item="ks_list_view">
                                     <span class="df_selection_text">
                                         List View
                                     </span>
-                                </li>
+                                </li> -->
                             </ul>
                             <button id="ks_dashboard_layout_edit" class="btn btn-primary btn-sm ks_dashboard_edit_layout">
                                 <span class="fa fa-lg fa-pencil"/>
