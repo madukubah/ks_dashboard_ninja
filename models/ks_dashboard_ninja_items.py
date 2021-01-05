@@ -558,12 +558,21 @@ class KsDashboardNinjaItems(models.Model):
                         chart_data = []
                         chart_sub_data = []
                         for res in ks_chart_record:
-
+                            # _logger.warning( res )
                             if res[ks_chart_groupby_relation_fields[0]] and res[ks_chart_groupby_relation_fields[1]]:
+                                # _logger.warning( res[ks_chart_groupby_relation_fields[0]] )
+                                # _logger.warning( type( res[ks_chart_groupby_relation_fields[0]] ) )
                                 if isinstance(res[ks_chart_groupby_relation_fields[0]], str):
                                     label = res[ks_chart_groupby_relation_fields[0]].split(" ")[0]
+                                    # label = res[ks_chart_groupby_relation_fields[0]]
+                                    # _logger.warning( label )
+                                elif isinstance(res[ks_chart_groupby_relation_fields[0]], unicode):
+                                    label = res[ks_chart_groupby_relation_fields[0]]
                                 else:
                                     label = res[ks_chart_groupby_relation_fields[0]][1]
+                                    # label = res[ks_chart_groupby_relation_fields[0]]
+                                    # _logger.warning( label )
+                                    
                                 labels = []
                                 value = []
                                 value_2 = []
@@ -571,6 +580,7 @@ class KsDashboardNinjaItems(models.Model):
                                 if rec.ks_chart_data_count_type != 'count':
                                     for ress in rec.ks_chart_measure_field:
                                         if isinstance(res[ks_chart_groupby_relation_fields[1]], str):
+
                                             labels.append(res[ks_chart_groupby_relation_fields[1]].split(" ")[
                                                               0] + " " + ress.field_description)
                                         else:
