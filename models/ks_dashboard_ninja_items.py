@@ -357,7 +357,7 @@ class KsDashboardNinjaItems(models.Model):
                         rec.ks_chart_data_count_type == "count" and not ks_chart_measure_field)) and not rec.ks_chart_relation_sub_groupby:
                     if rec.ks_chart_groupby_type == 'relational_type' and rec.ks_chart_relation_groupby:
                         ks_chart_data['groupByIds'] = []
-                        ks_chart_records = self.env[rec.ks_model_name].read_group(ks_chart_domain, set(
+                        ks_chart_records = self.env[rec.ks_model_name].sudo().read_group(ks_chart_domain, set(
                             ks_chart_measure_field + ks_chart_measure_field_2 + [ks_chart_groupby_relation_field]),
                                                                                   [ks_chart_groupby_relation_field],
                                                                                   orderby=orderby, limit=limit)
@@ -401,7 +401,7 @@ class KsDashboardNinjaItems(models.Model):
 
 
                     elif rec.ks_chart_groupby_type == 'date_type' and rec.ks_chart_date_groupby:
-                        ks_chart_records = self.env[rec.ks_model_name].read_group(ks_chart_domain, set(
+                        ks_chart_records = self.env[rec.ks_model_name].sudo().read_group(ks_chart_domain, set(
                             ks_chart_measure_field + ks_chart_measure_field_2 + [ks_chart_groupby_relation_field]),
                                                                                   [
                                                                                       ks_chart_groupby_relation_field + ":" + rec.ks_chart_date_groupby],
@@ -547,7 +547,7 @@ class KsDashboardNinjaItems(models.Model):
                             ks_chart_sub_groupby_field = rec.ks_chart_relation_sub_groupby.name
 
                         ks_chart_groupby_relation_fields = [ks_chart_group, ks_chart_sub_groupby_field]
-                        ks_chart_record = self.env[rec.ks_model_name].read_group(ks_chart_domain,
+                        ks_chart_record = self.env[rec.ks_model_name].sudo().read_group(ks_chart_domain,
                                                                                  set(ks_chart_measure_field
                                                                                      + ks_chart_measure_field_2 + [
                                                                                          ks_chart_groupby_relation_field,
@@ -778,7 +778,7 @@ class KsDashboardNinjaItems(models.Model):
                             ks_list_fields.append(res.name)
                             ks_list_view_data['label'].append(res.field_description)
 
-                        ks_list_view_records = self.env[rec.ks_model_name].read_group(ks_chart_domain, ks_list_fields,
+                        ks_list_view_records = self.env[rec.ks_model_name].sudo().read_group(ks_chart_domain, ks_list_fields,
                                                                                       [
                                                                                           rec.ks_chart_relation_groupby.name],
                                                                                       orderby=orderby, limit=limit)
@@ -806,7 +806,7 @@ class KsDashboardNinjaItems(models.Model):
                             ks_list_fields.append(res.name)
                             ks_list_view_data['label'].append(res.field_description)
 
-                        ks_list_view_records = self.env[rec.ks_model_name].read_group(ks_chart_domain, ks_list_fields,
+                        ks_list_view_records = self.env[rec.ks_model_name].sudo().read_group(ks_chart_domain, ks_list_fields,
                                                                                       [
                                                                                           rec.ks_chart_relation_groupby.name + ':' + rec.ks_chart_date_groupby],
                                                                                       orderby=orderby, limit=limit)
@@ -848,17 +848,17 @@ class KsDashboardNinjaItems(models.Model):
             if ks_domain and ks_domain != '[]' and ks_model_name:
                 proper_domain = self.ks_convert_into_proper_domain(ks_domain, rec)
                 if ks_func == 'search_count':
-                    data = self.env[ks_model_name].search_count(proper_domain)
+                    data = self.env[ks_model_name].sudo().search_count(proper_domain)
                 elif ks_func == 'search':
-                    data = self.env[ks_model_name].search(proper_domain)
+                    data = self.env[ks_model_name].sudo().search(proper_domain)
             elif ks_model_name:
                 # Have to put extra if condition here because on load,model giving False value
                 proper_domain = self.ks_convert_into_proper_domain(False, rec)
                 if ks_func == 'search_count':
-                    data = self.env[ks_model_name].search_count(proper_domain)
+                    data = self.env[ks_model_name].sudo().search_count(proper_domain)
 
                 elif ks_func == 'search':
-                    data = self.env[ks_model_name].search(proper_domain)
+                    data = self.env[ks_model_name].sudo().search(proper_domain)
             else:
                 return 0
         except Exception as e:
